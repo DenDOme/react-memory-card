@@ -5,7 +5,6 @@ import '../assets/Card.css'
 function Card({pokemon, mode, handleChangeMode}){
     return (
         <div className="card">
-            {/* {console.log(pokemon.found,mode)} */}
             {pokemon.found || mode ? (
                 <p>{pokemon.name}</p>
             ) : (

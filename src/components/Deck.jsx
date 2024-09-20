@@ -2,23 +2,17 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import getRandomPokemon from "../scripts/getPokemons";
 
-const initialPokemons = [
-    { id: '0', name: 'Pikachu', found: false },
-    { id: '1', name: 'Charizard', found: false },
-    { id: '2', name: 'Bulbasaur', found: false },
-    { id: '3', name: 'Squirtl', found: false },
-    { id: '4', name: 'Eevee', found: false },
-    { id: '5', name: 'Pikachu', found: false },
-    { id: '6', name: 'Charizard', found: false },
-    { id: '7', name: 'Bulbasaur', found: false },
-    { id: '8', name: 'Squirtl', found: false },
-    { id: '9', name: 'Eevee', found: false }
-];
-
-function Deck(){
+function Deck({cards}){
   const [modes , setModes] = useState({})
-  const [allPokemons, setAllPokemons] = useState(getRandomPokemon(initialPokemons));
+  const [allPokemons, setAllPokemons] = useState([]);
   
+  useEffect(() => {
+    if(allPokemons.length === 0){
+      const randomPokemons = getRandomPokemon(cards); 
+      setAllPokemons(randomPokemons); 
+    }
+  }, [cards], allPokemons.length);
+
   const handleChangeMode = (pokemonId) => {
     setModes((prevMode) => ({...prevMode, [pokemonId]: !prevMode[pokemonId] }))
   }
