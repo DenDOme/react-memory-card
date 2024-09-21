@@ -42,8 +42,10 @@ function Deck({cards,gameStart,gameEnd}){
   
   useEffect(() => {
     if(points === cards){
-      gameEnd();
-      gameStart();
+      setTimeout(() => {
+        gameEnd();
+        gameStart();
+      }, 1000);
     }
   }, [points])
 
