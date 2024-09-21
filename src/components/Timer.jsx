@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Timer({onclick}){
+function Timer({gameStart, gameEnd, lastTime}){
     const [time, setTime] = useState(180);
     const [run, setRun] = useState(true);
 
@@ -22,8 +22,11 @@ function Timer({onclick}){
     useEffect(() => {
         if(time <= 0){
             setRun(false);
-            onclick();
+            gameEnd();
+            gameStart();
+            lastTime(0);
         }
+        lastTime(time);
     }, [time])
 
     return (

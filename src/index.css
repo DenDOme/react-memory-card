@@ -49,20 +49,20 @@ button:hover {
   text-align: center;
 }
 
-.start-screen{
+.start-screen, .end-screen{
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
 }
 
-.start-buttons{
+.start-buttons, .end-buttons{
   display: flex;
   flex-direction: column;
   gap: 15px;  
   align-items: center;
 }
 
-.start-buttons button{
+.start-buttons button, .end-buttons button{
   padding: 5px 0;
   font-size: 24px;
   max-width: 150px;

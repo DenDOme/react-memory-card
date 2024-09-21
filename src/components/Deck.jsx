@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import getRandomPokemon from "../scripts/getPokemons";
 
-function Deck({cards}){
+function Deck({cards,gameStart,gameEnd}){
   const [modes , setModes] = useState({})
   const [allPokemons, setAllPokemons] = useState([]); 
   const [points, setPoints] = useState(0);
@@ -40,6 +40,13 @@ function Deck({cards}){
     }
   }, [modes]);
   
+  useEffect(() => {
+    if(points === cards){
+      gameEnd();
+      gameStart();
+    }
+  }, [points])
+
   const disableSelection = Object.keys(modes).length === 2;
 
   return (
