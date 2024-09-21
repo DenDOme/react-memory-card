@@ -7,11 +7,13 @@ function Deck({cards}){
   const [allPokemons, setAllPokemons] = useState([]);
   
   useEffect(() => {
-    if(allPokemons.length === 0){
-      const randomPokemons = getRandomPokemon(cards); 
-      setAllPokemons(randomPokemons); 
-    }
-  }, [cards], allPokemons.length);
+    const fetchPokemons = async () => {
+      const randomPokemons = await getRandomPokemon(cards);
+      setAllPokemons(randomPokemons);
+    };
+
+    fetchPokemons();
+  }, [cards]);
 
   const handleChangeMode = (pokemonId) => {
     setModes((prevMode) => ({...prevMode, [pokemonId]: !prevMode[pokemonId] }))
@@ -20,29 +22,30 @@ function Deck({cards}){
   useEffect(() => {
     if (Object.keys(modes).length === 2) {
       const selectedPokemons = Object.keys(modes).map((key) =>
-        allPokemons.find((pokemon) => pokemon.id === key)
+        allPokemons.find((pokemon) => pokemon.id === Number(key))
       );
-
+  
       if (selectedPokemons[0]?.name === selectedPokemons[1]?.name) {
         const updatedPokemons = allPokemons.map((pokemon) =>
           selectedPokemons.some((selected) => selected.id === pokemon.id)
             ? { ...pokemon, found: true }
             : pokemon
         );
-
         setAllPokemons(updatedPokemons);
       }
-
-      setTimeout(() => setModes({}), 1000); 
+  
+      setTimeout(() => setModes({}), 1000);
     }
   }, [modes]);
+  
+  const disableSelection = Object.keys(modes).length === 2;
 
   return (
     <>
       <h1>MEMORY GAME CHOOSE POKEMONS</h1>
       <div className="card-wrap">
         {allPokemons.map((pokemon) => {
-          return <Card key={pokemon.id} pokemon={pokemon} mode={modes[pokemon.id] || pokemon.found} handleChangeMode={handleChangeMode}/>
+          return <Card key={pokemon.id} pokemon={pokemon} mode={modes[pokemon.id] || pokemon.found} handleChangeMode={handleChangeMode}  disableSelection={disableSelection}/>
         })}
       </div>
     </>

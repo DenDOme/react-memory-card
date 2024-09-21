@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function getRandomPokemon(amount){
+async function getRandomPokemon(amount){
 
     const POKEMON_AMOUNT = 721;
     
@@ -25,8 +25,10 @@ function getRandomPokemon(amount){
             const data = await res.json();
             const {name, sprites} = data;
             const img = sprites.front_default
-            pokemons.push({name, img});
-            pokemons.push({name, img});
+            const uniqueId = i;  
+            const pairId = i + amount;
+            pokemons.push({ name, img, id: uniqueId });
+            pokemons.push({ name, img, id: pairId });
         }
 
         const shuffeledPokemons = shuffleArray(pokemons);
@@ -47,9 +49,7 @@ function getRandomPokemon(amount){
 
         return newArr
     }
-
-    const pokemons = getPokemons(amount);
-    return pokemons;
+    return await getPokemons(amount);
 }
 
 export default getRandomPokemon;

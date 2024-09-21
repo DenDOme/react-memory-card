@@ -6,20 +6,22 @@ import StartScreen from './components/StartScreen';
 function App() {
   const [gameStart , setGameStart] = useState(false);
   const [amount, setAmount ] = useState(5);
-  const [difficulty, setDifficulty ] = useState('easy');
 
   const changeDifficulty = (diff) => {
-    setDifficulty(diff);
-  }
-
-  useEffect(() => {
-    switch(difficulty){
-      case 'hard': setAmount(10); break;
-      case 'medium': setAmount(7);  break;
-      default: setAmount(5); break;
+    switch (diff) {
+      case 'hard':
+        setAmount(15);
+        break;
+      case 'medium':
+        setAmount(10);
+        break;
+      default:
+        setAmount(5);
+        break;
     }
 
-  },[difficulty])
+    setGameStart(true);
+  };
 
   return (
     <>
@@ -30,9 +32,9 @@ function App() {
         <>
           <h1>Choose difficulty</h1>
           <div className="start-screen">
-            <button onClick={() => {changeDifficulty('easy'); setGameStart(true)}}>easy</button>
-            <button onClick={() => {changeDifficulty('medium'); setGameStart(true)}}>medium</button>
-            <button onClick={() => {changeDifficulty('hard'); setGameStart(true)}}>hard</button>
+            <button onClick={() => changeDifficulty('easy')}>easy</button>
+            <button onClick={() => changeDifficulty('medium')}>medium</button>
+            <button onClick={() => changeDifficulty('hard')}>hard</button>
           </div>
         </>
       )}
