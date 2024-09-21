@@ -4,7 +4,8 @@ import getRandomPokemon from "../scripts/getPokemons";
 
 function Deck({cards}){
   const [modes , setModes] = useState({})
-  const [allPokemons, setAllPokemons] = useState([]);
+  const [allPokemons, setAllPokemons] = useState([]); 
+  const [points, setPoints] = useState(0);
   
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -28,9 +29,10 @@ function Deck({cards}){
       if (selectedPokemons[0]?.name === selectedPokemons[1]?.name) {
         const updatedPokemons = allPokemons.map((pokemon) =>
           selectedPokemons.some((selected) => selected.id === pokemon.id)
-            ? { ...pokemon, found: true }
+            ? { ...pokemon, found: true } 
             : pokemon
         );
+        setPoints((prevPoints) => prevPoints + 1);
         setAllPokemons(updatedPokemons);
       }
   
@@ -43,6 +45,7 @@ function Deck({cards}){
   return (
     <>
       <h1>MEMORY GAME CHOOSE POKEMONS</h1>
+      <p>points {points} / {cards}</p>
       <div className="card-wrap">
         {allPokemons.map((pokemon) => {
           return <Card key={pokemon.id} pokemon={pokemon} mode={modes[pokemon.id] || pokemon.found} handleChangeMode={handleChangeMode}  disableSelection={disableSelection}/>
