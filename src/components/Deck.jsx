@@ -4,7 +4,7 @@ import getRandomPokemon from "../scripts/getPokemons";
 import LoadingScreen from "./LoadingScreen";
 import '../assets/Deck.css'
 
-function Deck({cards,gameStart,gameEnd}){
+function Deck({cards,gameStart,gameEnd, loadingDone}){
   const [modes , setModes] = useState({})
   const [allPokemons, setAllPokemons] = useState([]); 
   const [points, setPoints] = useState(0);
@@ -15,6 +15,7 @@ function Deck({cards,gameStart,gameEnd}){
       const randomPokemons = await getRandomPokemon(cards);
       setAllPokemons(randomPokemons);
       setLoading(false);
+      loadingDone();
     };
 
     fetchPokemons();

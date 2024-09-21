@@ -11,11 +11,16 @@ function App() {
   const [amount, setAmount ] = useState(5);
   const [difficulty, setDifficulty] = useState('easy');
   const [lastTime, setLastTime] = useState(null);
+  const [loadingDone, setLoadingDone] = useState(false);
   const [scoreBoard, setScoreBoard] = useState({
     easy: [],
     medium: [],
     hard: []
   });
+
+  const changeLoadingDone = () => {
+    setLoadingDone(!loadingDone);
+  }
 
   const changeDifficulty = (diff) => {
     switch (diff) {
@@ -69,8 +74,8 @@ function App() {
       ) : (
           gameStart ? (
             <div className='wrapper'>
-              <Timer gameStart={changeGameStart} gameEnd={changeEndScreen} lastTime={changeLastTime}/>
-              <Deck cards={amount} gameStart={changeGameStart} gameEnd={changeEndScreen}/>
+              <Timer gameStart={changeGameStart} gameEnd={changeEndScreen} lastTime={changeLastTime} loading={loadingDone}/>
+              <Deck cards={amount} gameStart={changeGameStart} gameEnd={changeEndScreen} loadingDone={changeLoadingDone}/>
             </div>
           ) : (
             <StartScreen onclick={changeDifficulty}/>
