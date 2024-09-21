@@ -12,7 +12,7 @@ function Card({ pokemon, mode, handleChangeMode, disableSelection }) {
                 
                 <div className="card-back">
                     <button onClick={() => handleChangeMode(pokemon.id)} disabled={disableSelection}>
-                        <img src="/card_back.svg" alt="card backside" />
+                        <img src={`${import.meta.env.BASE_URL}card_back.svg`} alt="card backside" />
                     </button>
                 </div>
             </div>

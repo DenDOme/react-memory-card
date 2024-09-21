@@ -1,0 +1,9 @@
+.card-wrap{
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 0 auto;
+}

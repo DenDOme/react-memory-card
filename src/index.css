@@ -28,42 +28,7 @@ button:hover {
   border-color: #646cff;
 }
 
-.card-wrap{
-  max-width: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin: 0 auto;
-}
-
 #root{
   width: 100%;
 }
 
-.wrapper{
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.start-screen, .end-screen{
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.start-buttons, .end-buttons{
-  display: flex;
-  flex-direction: column;
-  gap: 15px;  
-  align-items: center;
-}
-
-.start-buttons button, .end-buttons button{
-  padding: 5px 0;
-  font-size: 24px;
-  max-width: 150px;
-}

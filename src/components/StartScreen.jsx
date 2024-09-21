@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-
+import '../assets/Screen.css';
 function StartScreen({onclick}){
     return (
         <div className='start-screen'>

@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import getRandomPokemon from "../scripts/getPokemons";
+import LoadingScreen from "./LoadingScreen";
+import '../assets/Deck.css'
 
 function Deck({cards,gameStart,gameEnd}){
   const [modes , setModes] = useState({})
   const [allPokemons, setAllPokemons] = useState([]); 
   const [points, setPoints] = useState(0);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     const fetchPokemons = async () => {
       const randomPokemons = await getRandomPokemon(cards);
       setAllPokemons(randomPokemons);
+      setLoading(false);
     };
 
     fetchPokemons();
@@ -50,6 +54,10 @@ function Deck({cards,gameStart,gameEnd}){
   }, [points])
 
   const disableSelection = Object.keys(modes).length === 2;
+
+  if(loading){
+    return <LoadingScreen />;
+  }
 
   return (
     <>

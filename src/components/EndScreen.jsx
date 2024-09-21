@@ -1,4 +1,4 @@
-import { useState } from "react";
+import '../assets/Screen.css'
 
 function EndScreen({time, scoreBoard, gameEnd, lastTime}){
     return (
