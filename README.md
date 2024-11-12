@@ -1,8 +1,27 @@
-# React + Vite
+# React Memory Card Game
+Live: dendome.github.io/react-memory-card/
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+### Описание
+Это игра на память, разработанная с использованием React. Пользователь выбирает сложность игры, после чего отображается колода закрытых карт. При нажатии на карту она переворачивается, показывая изображение и название Покемона (данные получаются из PokeAPI). Цель игры – найти все пары карт за минимальное время.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Возможности
+- Три уровня сложности:
+  - **Легкий**: 20 карт
+  - **Средний**: 30 карт
+  - **Сложный**: 40 карт
+- Таймер, отсчитывающий время прохождения игры.
+- Таблица лидеров с лучшим временем для каждого уровня сложности.
+- Анимированное (Поворачивание карт) нажатие на карточек для нахождение пар.
+
+### Установка и запуск
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/username/project-name.git
+2. Установите все пакеты:
+    ```bash
+    npm i
+3. Запустите локально
+    ```bash
+    npm run dev
