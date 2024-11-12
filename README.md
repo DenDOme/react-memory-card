@@ -34,7 +34,7 @@ src/               # Исходный код проекта
 ### Установка и запуск
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/username/project-name.git
+   git clone https://github.com/DenDOme/react-memory-card
 2. Установите все пакеты:
     ```bash
     npm i
